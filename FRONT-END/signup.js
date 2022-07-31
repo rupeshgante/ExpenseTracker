@@ -14,20 +14,18 @@ const password=document.getElementById('password').value;
         password:password
     })
     .then(res=>{
-        // console.log(res);
+        console.log(res);
         if(res.status==201){
             notifyUser(res.data.message);
             document.getElementById('name').value='';
 document.getElementById('email').value='';
 document.getElementById('phone').value='';
 document.getElementById('password').value='';
-        }else{
-            throw new Error();
         }
     })
     .catch(err=>{
         console.log('this is error'+err);
-    notifyUser(err.message);
+    notifyUser('User exists');
 })
 }
 

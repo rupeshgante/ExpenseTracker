@@ -29,7 +29,7 @@ exports.postSignup=(req,res,next)=>{
 
             })
             .catch(err => {
-                res.status(403).json(err)
+                res.status(403).json({success:false,message:err})
               })
             })
         })
