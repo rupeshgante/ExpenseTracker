@@ -14,7 +14,7 @@ app.use(bodyParser.json({ extended: false }));
 
 const User=require('./models/user');
 
-const publicRoutes=require('./routes/public');
+const publicRoutes=require('./routes/user');
 
 app.use(publicRoutes);
 
