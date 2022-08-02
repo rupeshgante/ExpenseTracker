@@ -10,7 +10,10 @@ form.addEventListener('submit',(e)=>{
         password:password
     })
     .then(res=>{
-        alert(res.data.message);
+        // alert(res.data.message);
+        if(res.data.success){
+            window.location.replace('http://127.0.0.1:5500/FRONT-END/expense/expense.html')
+        }
     })
     .catch((error) => {
         if( error.response ){

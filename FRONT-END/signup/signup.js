@@ -1,12 +1,12 @@
-const signup=document.getElementById('signup-container');
+const signup=document.getElementById('signup-form');
 
-signup.addEventListener('click',(e)=>{
-    if(e.target.className=='signup-button'){
-const name=document.getElementById('name').value;
-const email=document.getElementById('email').value;
-const phone=document.getElementById('phone').value;
-const password=document.getElementById('password').value;
-
+signup.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const name=signup.name.value;
+    const phone=signup.phone.value;
+    const email=signup.email.value;
+    const password=signup.password.value;
+console.log(name,phone,email,password);
     axios.post('http://localhost:7000/signup',{
         name:name,
         email:email,
@@ -17,10 +17,10 @@ const password=document.getElementById('password').value;
         console.log(res);
         if(res.status==201){
             notifyUser(res.data.message);
-            document.getElementById('name').value='';
-document.getElementById('email').value='';
-document.getElementById('phone').value='';
-document.getElementById('password').value='';
+//             document.getElementById('name').value='';
+// document.getElementById('email').value='';
+// document.getElementById('phone').value='';
+// document.getElementById('password').value='';
         }
         else{
             throw new Error()
@@ -34,7 +34,7 @@ document.getElementById('password').value='';
         else{
     notifyUser(err);}
 })
-}
+
 
 })
 

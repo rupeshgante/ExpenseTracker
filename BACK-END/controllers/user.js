@@ -32,7 +32,7 @@ exports.postSignup=(req,res)=>{
 
             })
             .catch(err => {
-                res.status(403).json({success:false,message:'user exists'})
+                res.status(403).json({success:false,message:'Email already registered'})
               })
             })
         })
