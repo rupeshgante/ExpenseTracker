@@ -12,7 +12,9 @@ form.addEventListener('submit',(e)=>{
     .then(res=>{
         // alert(res.data.message);
         if(res.data.success){
-            window.location.replace('http://127.0.0.1:5500/FRONT-END/expense/expense.html')
+            console.log(res.data.token);
+            localStorage.setItem('token',res.data.token)
+            window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/expense.html')
         }
     })
     .catch((error) => {

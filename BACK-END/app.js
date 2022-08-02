@@ -13,10 +13,16 @@ app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 
 const User=require('./models/user');
+const Expense=require('./models/expense');
 
-const publicRoutes=require('./routes/user');
+User.hasMany(Expense);
+Expense.belongsTo(User,{ constraints: true, onDelete: 'CASCADE' });
 
-app.use(publicRoutes);
+const userRoutes=require('./routes/user');
+const expenseRoutes=require('./routes/expense');
+
+app.use(userRoutes);
+app.use('/user',expenseRoutes);
 
 sequelize
 // .sync({force:true})
