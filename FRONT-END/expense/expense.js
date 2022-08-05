@@ -84,3 +84,57 @@ function add(data){
 })
     listOfExpenses.appendChild(li);
     }
+
+
+
+    var premium=document.getElementById('premium-membership');
+    premium.addEventListener('click',async(e)=>{
+        const token=localStorage.getItem('token');
+        console.log('token :',token);
+        const response= await axios.get('http://localhost:7000/user/premiummembership',{headers:{Authentication:token}});
+        var options=
+        {
+            "key":response.data.key_id,
+            "name":"Test Company",
+            "order_id":response.data.order.id,
+            "prefill":{
+                "name":"TEST USER",
+                "email":"test@email.com",
+                "contact":"9963251062"
+            },
+            "theme":{
+                "color":"#3399c"
+            },
+            "handler":function(response){
+                console.log('sent');
+                axios.post('http://localhost:7000/user/updatetransaction',{
+                    order_id : options.order_id,
+                    payment_id : response.razorpay_payment_id,
+            
+          },{headers:{Authentication:token}}
+          ).then(()=>{
+            document.body.style.background='linear-gradient(45deg,#a6bbba,#25322b)';
+            const premium=document.getElementById('form');
+            premium.style.background='linear-gradient(45deg,#cee3e2,#32e7e7)';
+
+            alert('You are a Premium Member Now');
+
+          }).catch(()=>{
+            alert('Something went wrong');
+          })
+            }
+        }
+        const rzp1 = new Razorpay(options);
+        rzp1.open();
+        e.preventDefault();
+      
+        rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+       });
+    })

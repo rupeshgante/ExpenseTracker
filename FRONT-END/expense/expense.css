@@ -95,26 +95,34 @@ header .header{
     align-items: center;
     padding: 12px 0;
     box-sizing: border-box;
-    background-color: antiquewhite;
+    background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
     
   }
   
-  #delete{
+  #delete {
+    position: relative;
+   left:500px;
       font-family: "Roboto", sans-serif;
       text-transform: uppercase;
       outline: 0;
       background-color: #2088d2;
-      background-image: linear-gradient(45deg,#328f8a,#08ac4b);
+      background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
       width: 10%;
       border: 0;
       padding: 15px;
-      color: #FFFFFF;
-      font-size: 14px;
+      color: #df1b1b;
+      border:2px solid red;
+      font-size: 20px;
       -webkit-transition: all 0.3 ease;
       transition: all 0.3 ease;
       cursor: pointer;
       margin-bottom: 15px;
 
+  }
+
+  #delete button:hover{
+    color: red;
+    background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
   }
   
   /* Element counter */
@@ -139,3 +147,28 @@ header .header{
     border-top: 1px solid rgba(255,255,255,0.2);
   }
   
+
+  #premium-membership {
+    position: relative;
+    left: 570px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background-color: #328f8a;
+    background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
+    width: 25%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+  .expenses button:hover{
+    background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
+    color:black;
+
+  }
