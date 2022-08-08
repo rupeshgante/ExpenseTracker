@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expenses</title>
-    <link rel="stylesheet" href="expense.css">
+    <link rel="stylesheet" href="premium.css">
 </head>
 <body>
     <div id="expenses" class="expenses">
@@ -31,13 +31,30 @@
 
     </div>
     <div>
-        <button class="premium-membership"id="premium-membership">Get Premium Membership</button>
+        <button id="premium-membership">Get Premium Membership</button>
     </div>
     <div id="expense-list" class="expense-list">
         <ul id="listOfExpenses"></ul>
 
     </div>
+    <div id="board" class="board">
+    <a href="#leaderboard-holder" class="leaderboard-holder">LEADERBOARD</a>
     
+    <section id="leaderboard" class="container">
+        
+        <h2>LEADERBOARD</h2>
+        <button class="cancel">X</button>
+        <div class="leaderboard-row leaderboard-header">
+            <span class='leaderboard-number leaderboard-column'>RANK</span>
+            <span class='leaderboard-name leaderboard-column'>NAME</span>
+            <span class='leaderboard-expense leaderboard-column'>TOTAL EXPENSE</span>
+        </div>
+          <div class='leaderboard-items'>
+    
+        </div>
+        
+    </section>
+</div>
     </div>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>

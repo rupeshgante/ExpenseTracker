@@ -1,3 +1,5 @@
+
+
 header .header{
     background-color: #fff;
     height: 45px;
@@ -18,7 +20,7 @@ header .header{
   .form {
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
+    background-image: linear-gradient(45deg,#328f8a,#08ac4b);
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
@@ -75,7 +77,7 @@ header .header{
   
   body {
     background-color: #328f8a;
-    background-image: linear-gradient(45deg,#328f8a,#08ac4b);
+    background-image: linear-gradient(45deg,#edeccf,#ac9e08);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -157,13 +159,12 @@ header .header{
     text-transform: uppercase;
     outline: 0;
     background-color: #328f8a;
-    background-image: linear-gradient(45deg,#1b1b1d,#404141);
+    background-image: linear-gradient(45deg,#2375d2,#cee1f5);
     width: 25%;
     border: 0;
     padding: 15px;
     /* color: rgb(104, 91, 223); */
-    font-family: Arial ;
-    color: rgb(244, 201, 9);
+    font-family: Arial rgb(244, 201, 9);
     font-size: 19px;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
@@ -177,3 +178,103 @@ header .header{
 
   }
 
+  .container{
+    max-width:900px;
+    margin:0 auto;
+    padding:20px 30px;
+}
+
+.leaderboard-holder{
+    border:2px solid #070a10;
+    border-radius: 7px;;
+    padding:2px 10px;
+    position: absolute;
+    right: 2%;
+}
+
+
+@media(max-width:600px){
+    header li{
+        margin:0px 20px;
+    }
+}
+#leaderboard{
+    margin:0px;
+    display: none;
+    position:fixed;
+    top:50px;
+    height: 95%;
+    right:0;
+    background-image: linear-gradient(45deg,#a4b4c6,#44e37e);
+    border:1px solid rgb(177, 103, 103);
+    min-height:50vh;
+}
+#leaderboard h2{
+    margin:20px 0px;
+    padding:0;
+}
+
+
+.leaderboard-bottom{
+    text-decoration: none;
+    color:#56CCF2;
+    font-size: 16px;
+    font-weight:700;
+}
+.cancel{
+    position:absolute;
+    cursor:pointer;
+    color:rgb(200, 29, 29);
+    top:0;
+    right:0;
+    margin:20px;
+    background:none;
+    font-size:16px;
+    font-weight: 700;
+    border:1px solid rgb(121, 117, 117);
+    border-radius:7px;
+    padding:5px;
+}
+
+
+
+.leaderboard-holder{
+    border:2px solid #56CCF2;
+    border-radius: 7px;;
+    padding:2px 10px;
+    position: absolute;
+    right: 2%;
+}
+
+
+
+.leaderboard-row{
+  font-size:18px;
+  display:flex;
+}
+.leaderboard-header{
+  font-size:20px;
+  font-weight: bold;
+}
+.leaderboard-item{
+  width:60%;
+}
+
+
+.leaderboard-name{
+  /* position: relative; */
+  width:20%;
+  /* right:20px; */
+
+}
+.leaderboard-totalexpense{
+  width:35%;
+}
+.leaderboard-column{
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1px solid black; */
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}

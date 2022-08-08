@@ -19,13 +19,14 @@ exports.postSignup=(req,res)=>{
      if(err){
         res.json({message:'Unable to create new user'})
      }
-
+const exp=0;
     // console.log(name,email,phone,password);
             User.create({
                 name:name,
                 email:email,
                 phone:phone,
-                password:hash
+                password:hash,
+                totalexpense:exp
             })
             .then(()=>{
                 res.status(201).json({success:true,message:'Successfully Signed-Up'})
@@ -54,12 +55,10 @@ User.findAll({where:{email}})
             return res.json({success: false, message: 'Something went wrong'})
             }
             if (response){
-                console.log(JSON.stringify(user))
+                console.log(JSON.stringify(user.name))
                 const jwttoken = getAccessToken(user[0].id);
-                res.json({token: jwttoken, success: true, message: 'Successfully Logged In'})
-            // Send JWT
+                res.json({user:user,token: jwttoken, success: true, message: 'Successfully Logged In'})
             } else {
-            // response is OutgoingMessage object that server response http request
             return res.status(401).json({success: false, message: 'Incorrect Password'});
             }
         });

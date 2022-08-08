@@ -33,6 +33,7 @@ exports.updateTransaction=async(req,res)=>{
         const {payment_id,order_id}=req.body;
         Order.findOne({where:{orderid:order_id}}).then(order=>{
             req.user.update({ispremiumuser:true})
+            order.update({status:'DONE'})
             return res.status(202).json({success:true,message:'Transaction Successfull'});
         }).catch(err=>{
             throw new Error(err);

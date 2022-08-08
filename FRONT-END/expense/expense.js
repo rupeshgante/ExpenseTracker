@@ -1,5 +1,6 @@
 const form=document.getElementById('expense-form');
 
+//ADD EXPENSE
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
     const amount=form.amount.value;
@@ -26,7 +27,7 @@ axios.post('http://localhost:7000/user/addexpense',
 })
 
 
-
+//GET EXPENSE
 const getdata=document.getElementById('get-expense');
 const token=localStorage.getItem('token');
 getdata.addEventListener('click',()=>{
@@ -45,7 +46,7 @@ getdata.addEventListener('click',()=>{
 function add(data){
     var listOfExpenses=document.getElementById('listOfExpenses');
     var li=document.createElement('li');
-    li.appendChild(document.createTextNode(`Amount : ${data.amount}  ||Description : ${data.description}  ||Catageory : ${data.catageory}`));
+    li.appendChild(document.createTextNode(`Amount : ${data.amount}  ||  Description : ${data.description}  ||  Catageory : ${data.catageory}`));
     // var edit=document.createElement('input');
     // edit.id='edit';
     // edit.value='EDIT';
@@ -67,15 +68,16 @@ function add(data){
 //    console.log(err);
 //     }
 //     })
+
+//DELETE EXPENSE
     var del=document.createElement('input');
     del.id='delete';
     del.value='DELETE';
     del.type='button';
-    // del.style.border="2px solid red";
     li.appendChild(del)
     del.addEventListener('click',async()=>{
         try{
-        await axios.delete(`http://localhost:7000/user/deleteexpense/${data.id}`,{headers:{Authentication:token}})
+        await axios.delete(`http://localhost:7000/user/deleteexpense/${data.id}`,{headers:{Authentication:token},data:{amount:data.amount}})
              li.remove();
         }
         catch(err){
@@ -85,10 +87,11 @@ function add(data){
     listOfExpenses.appendChild(li);
     }
 
-
+//PREMIUM MEMBERSHIP
 
     var premium=document.getElementById('premium-membership');
     premium.addEventListener('click',async(e)=>{
+        e.preventDefault();
         const token=localStorage.getItem('token');
         console.log('token :',token);
         const response= await axios.get('http://localhost:7000/user/premiummembership',{headers:{Authentication:token}});
@@ -113,11 +116,13 @@ function add(data){
             
           },{headers:{Authentication:token}}
           ).then(()=>{
-            document.body.style.background='linear-gradient(45deg,#a6bbba,#25322b)';
-            const premium=document.getElementById('form');
-            premium.style.background='linear-gradient(45deg,#cee3e2,#32e7e7)';
-
+            // document.body.style.background='linear-gradient(45deg,#cee3e2,#e7bd32)';
+            // const premium=document.getElementById('form');
+            // premium.style.background='linear-gradient(45deg,#cee3e2,#32e7e7)';
             alert('You are a Premium Member Now');
+            window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/premium.html')
+            // premium.classList.add('active');
+
 
           }).catch(()=>{
             alert('Something went wrong');
@@ -138,3 +143,75 @@ function add(data){
         alert(response.error.metadata.payment_id);
        });
     })
+
+
+    // Leaderboard
+
+    const leaderboard=document.getElementById('board')
+
+    leaderboard.addEventListener('click',(e)=>{
+        if(e.target.className=='leaderboard-holder')
+        {
+            axios.get('http://localhost:7000/user/getalluser',{headers:{Authentication:token}})
+            .then(res=>{
+                const data=res.data;
+                console.log('leaderboard data: '+JSON.stringify(data));
+                  showBoard(data);
+                  document.querySelector('#leaderboard').style = "display:block;"
+                })
+                .catch(err=>console.log(err));
+              
+        }
+        if (e.target.className=='cancel'){
+            document.querySelector('#leaderboard').style = "display:none";
+            document.querySelector('.leaderboard-items').innerHTML = '';
+
+            
+        }
+    })
+
+
+// SHOWING LEADER BOARD
+    function showBoard(data){
+        if(    document.querySelector('#leaderboard').style = "display:block;"){
+            document.querySelector('.leaderboard-items').innerHTML = '';
+        }
+    const leaderboard_items = document.querySelector('#leaderboard .leaderboard-items');
+    let i=0;
+    data.forEach(user=>{
+        i++;
+        const leaderboard_item = document.createElement('div');
+        leaderboard_item.classList.add('leaderboard-row');
+        leaderboard_item.setAttribute('id',`${user.id}`);
+        leaderboard_item.innerHTML = `
+                <span class='leaderboard-item leaderboard-column'>
+                    <span class='leaderboard-rank leaderboard-column'>${i}</span>
+                     <span >
+                     <a href='#user class='leaderboard-name leaderboard-column' onclick='display(${user.id})' >${user.name}</a>
+                     </span>
+                        <span class='leaderboard-totalexpense leaderboard-column'>${user.totalexpense}</span>
+                </span>`
+        leaderboard_items.appendChild(leaderboard_item);
+    })
+    
+    }
+
+
+    //PREMIUM USER FEATURE 
+
+   function display(id){
+    console.log('ss',id);
+    data = {
+        "user_id":id
+      }
+    axios.get('http://localhost:7000/user/getoneexpense',{params: { user_id:id },headers:{Authentication:token}})
+    .then(res=>{
+        for(var i=0;i<res.data.length;i++){
+            add(res.data[i]);
+        }
+     })
+     .catch(err=>{
+        console.log(err);
+     })
+
+    }

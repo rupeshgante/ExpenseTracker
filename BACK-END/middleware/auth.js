@@ -3,7 +3,7 @@ const User=require('../models/user');
 
 exports.authenticate=(req,res,next)=>{
     try{
-        console.log('auth received'+JSON.stringify(req.headers));
+        // console.log('auth received'+JSON.stringify(req.headers));
         
     const token=req.headers["authentication"];
     console.log('token is : ',token);

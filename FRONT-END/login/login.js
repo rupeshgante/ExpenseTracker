@@ -12,10 +12,14 @@ form.addEventListener('submit',(e)=>{
     .then(res=>{
         // alert(res.data.message);
         if(res.data.success){
-            console.log(res.data.token);
+            console.log(res.data);
             localStorage.setItem('token',res.data.token)
-            window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/expense.html')
+           if(res.data.user[0].ispremiumuser){
+                        window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/premium.html')
+           }else{
+            window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/expense.html');
         }
+    }
     })
     .catch((error) => {
         if( error.response ){
