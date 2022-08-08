@@ -1,7 +1,8 @@
-const form=document.getElementById('login-form');
+const form=document.getElementById('form');
 
-form.addEventListener('submit',(e)=>{
+form.addEventListener('click',(e)=>{
     e.preventDefault();
+    if(e.target.className=='login'){
     const email=form.email.value;
     const password=form.password.value;
 
@@ -27,4 +28,14 @@ form.addEventListener('submit',(e)=>{
             alert (error.response.data.message);
         }
     })
+}
+if(e.target.className=='forgot-password'){
+    console.log('clicked');
+    document.querySelector('#forgot').style = "display:block;"
+}
+if(e.target.className=='reset'){
+    axios.post('http://localhost:7000/forgotpassword',{})
+
+}
 })
+

@@ -75,3 +75,7 @@ header .header{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  .forgot{
+    display: none;
+  }

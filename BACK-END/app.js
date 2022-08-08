@@ -24,10 +24,12 @@ Order.belongsTo(User);
 const userRoutes=require('./routes/user');
 const expenseRoutes=require('./routes/expense');
 const purchaseRoutes=require('./routes/purchase');
+const passwordRoutes=require('./routes/password');
 
 app.use(userRoutes);
 app.use('/user',expenseRoutes);
 app.use('/user',purchaseRoutes);
+app.use(passwordRoutes);
 
 sequelize
 // .sync({force:true})

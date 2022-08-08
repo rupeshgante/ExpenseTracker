@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="login-page">
-      <div class="form">
+      <div class="form" id="form">
         <div class="login">
           <div class="login-header">
             <h3>LOGIN</h3>
@@ -19,9 +19,23 @@
         <form class="login-form" id="login-form">
           <input type="text" placeholder="email" id="email" required/>
           <input type="password" placeholder="password" id="password" required/>
-          <button>login</button>
+          <button id="login" class="login">login</button>
+          <!-- <p class="message">Forgot Password <button id="forgot-password" class="forgot-password">Click Here</button></p> -->
+
+
+          <p class="message">Forgot Password <a id="forgot-password" class="forgot-password"href="#forgot">Click Here</a></p>
+
           <p class="message">Not registered? <a href="../signup/signup.html">Create an account</a></p>
+
         </form>
+
+        <form class="forgot" id="forgot">
+          <input type="text" placeholder="email" id="reset-email" required/>
+          
+          <button id="reset" class="reset">Submit</button>
+
+        </form>
+
       </div>
     </div>
 
