@@ -1,0 +1,35 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rupeshgante/ExpenseTracker.git"
+  },
+  "author": "rupesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rupeshgante/ExpenseTracker/issues"
+  },
+  "homepage": "https://github.com/rupeshgante/ExpenseTracker#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "razorpay": "^2.8.3",
+    "sequelize": "^6.21.3"
+  }
+}

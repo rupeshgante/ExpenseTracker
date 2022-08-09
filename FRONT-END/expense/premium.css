@@ -153,6 +153,7 @@ header .header{
   
 
   #premium-membership {
+    display: none;
     position: relative;
     left: 570px;
     font-family: "Roboto", sans-serif;
