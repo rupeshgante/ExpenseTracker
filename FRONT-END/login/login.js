@@ -46,6 +46,7 @@ if(e.target.className=='reset'){
     axios.post('http://localhost:7000/forgotpassword',{email:mail})
     .then(res=>{
         console.log(res);
+        alert(res.data.message);
     })
     .catch(err=>{
         console.log(err);
