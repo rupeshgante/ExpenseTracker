@@ -29,11 +29,11 @@ th {
 
 }
 
-button{
-    padding: 2%;
-    position:absolute;
+button {
+    padding: 1%;
+    /* position:absolute;
     bottom:0;
-    right:0;
+    right:0; */
     background-color: #4997e1;
     color:white;
     cursor: pointer;

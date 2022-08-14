@@ -16,6 +16,7 @@ const User=require('./models/user');
 const Expense=require('./models/expense');
 const Order=require('./models/order');
 const Forgotpassword=require('./models/forgotpassword');
+const DownloadedFile=require('./models/downloadedfiles');
 
 User.hasMany(Expense);
 Expense.belongsTo(User,{ constraints: true, onDelete: 'CASCADE' });
@@ -23,6 +24,8 @@ User.hasMany(Order);
 Order.belongsTo(User);
 User.hasMany(Forgotpassword);
 Forgotpassword.belongsTo(User);
+User.hasMany(DownloadedFile);
+DownloadedFile.belongsTo(User);
 
 const userRoutes=require('./routes/user');
 const expenseRoutes=require('./routes/expense');

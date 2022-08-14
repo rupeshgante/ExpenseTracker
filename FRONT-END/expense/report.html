@@ -9,11 +9,11 @@
 </head>
 <body>
     <h2>Day To Day Expenses</h2>
-    <h2>Year</h2>
+    <h2 id="year">Year</h2>
 
       <div class="day-to-day-report"></div>
-      <h3>Date</h3>
-       <table>
+      <h3 id="month"></h3>
+       <table id="daily">
           <tr>
             <th>Date</th>
             <th>Description</th>
@@ -21,9 +21,10 @@
             <th>Income</th>
             <th>Expense</th>
           </tr>
+          
         </table>
       </div>
-   <div class="yearly-report">
+   <!-- <div class="yearly-report">
     <h3>Yearly Report</h3>
 
     <table>
@@ -31,16 +32,22 @@
         <th>Income</th>
         <th>Expense</th>
         <th>Savings</th>
+       
     </table>
    </div>   
 
    <div class="notes">
     <h3>Notes Report</h3>
-    <table>
+    <table >
         <th>Date</th>
         <th>Notes</th>
     </table>
-   </div>
-    <button>Download</button>
+   </div> -->
+   <button id="prev-downloads">Get Previous Downloads</button>
+    <button id="download" class="download">Download</button>
+    <ul id="list-of-files"></ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="report.js"></script>
 </body>
 </html>

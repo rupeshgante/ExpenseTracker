@@ -1,10 +1,12 @@
 const User=require('../models/user');
 const Expense=require('../models/expense');
-const bcrypt=require('bcrypt');
-const jwt = require('jsonwebtoken');
+const AWS=require('aws-sdk');
 const dotenv = require('dotenv');
+const { response } = require('express');
 dotenv.config();
-
+const S3Services=require('../services/S3Sservices');
+const UserServices=require('../services/userservices');
+const DownloadedFile=require('../models/downloadedfiles');
 
 exports.addExpense=(req,res)=>{
     // res.json('received');
@@ -84,4 +86,43 @@ exports.deleteExpense=(req,res)=>{
                      .catch(err=>{
                         res.status(403).json({success:false,message:err});
                      })
+}
+
+exports.downloadExpense=async(req,res)=>{
+  try{
+    const expense=await UserServices.getExpense(req);
+    console.log(expense);
+    const stringifyExpense=JSON.stringify(expense);
+    console.log('expense'+stringifyExpense);
+    const userId=req.user.id;
+    const filename=`expense${userId}/${new Date()}.txt`;
+    const url=await S3Services.uploadToS3(stringifyExpense,filename);
+    console.log(url);
+    req.user.createDownloadedfile({
+      url:url
+    })
+     .then(res=>{
+      console.log(res)
+     })
+    res.status(200).json({success:true,url});
+  }
+   catch(err){
+    console.log(err);
+     res.status(500).json({success:false,url:'',error:err})
+   }
+
+
+}
+
+exports.previousFiles=(req,res)=>{
+  const id=req.user.id;
+  console.log('id :',id);
+    req.user.getDownloadedfiles()
+              .then(files=>{
+                console.log(files);
+                res.status(200).json(files);
+              })
+              .catch(err=>{
+                res.status(402).json({error:err,success:false});
+              })
 }
