@@ -26,10 +26,12 @@ exports.addExpense=(req,res)=>{
                })
 }
 
-const ItemsPerPage=2;
 exports.getExpense=async (req,res)=>{
-  const page=req.params.page;
-// console.log('pageno:'+page);
+  // console.log(req);
+  const ItemsPerPage=+req.query.rows ||2;
+  console.log('Items',ItemsPerPage)
+  const page=+req.query.page || 1;
+console.log('pageno:'+page);
 let totalItems;
   const id=req.user.id;
   console.log('id :',id);
@@ -47,6 +49,7 @@ let totalItems;
           console.log('expenses  '+JSON.stringify( expenses));
           res.json({expenses,
           totalexpenses:totalItems,
+          currentPage:page,
           hasNextPage:ItemsPerPage*page<totalItems,
           hasPreviosPage:page>1,
           nextPage:page+1,

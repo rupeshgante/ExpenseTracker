@@ -24,15 +24,15 @@ window.addEventListener('DOMContentLoaded',()=>{
 
     axios.get('http://localhost:7000/user/getexpense',{headers:{Authentication:token}})
     .then(res=>{
-        // console.log(res);        
-        const datee=new Date(res.data[0].createdAt);
+        console.log(res);        
+        const datee=new Date(res.data.expenses[0].createdAt);
         const month=document.getElementById('month');
         const year=document.getElementById('year');
         year.innerHTML=`${datee.getFullYear()}`
         // console.log(datee.toLocaleString('default', { month: 'long'}));
         month.innerHTML=`${datee.toLocaleString('default', { month: 'long'})}`;
-        for(var i=0;i<res.data.length;i++){
-            show(res.data[i]);
+        for(var i=0;i<res.data.expenses.length;i++){
+            show(res.data.expenses[i]);
         }
      })
      .catch(err=>{
@@ -65,7 +65,7 @@ previous.addEventListener('click',()=>{
 
 
 function show(data){
-  
+  console.log(data);
     const row=document.getElementById('daily').insertRow();
     var date = row.insertCell(0);
 var description = row.insertCell(1);

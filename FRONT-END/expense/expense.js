@@ -31,7 +31,13 @@ axios.post('http://localhost:7000/user/addexpense',
 const getdata=document.getElementById('get-expense');
 const token=localStorage.getItem('token');
 getdata.addEventListener('click',()=>{
-    axios.get('http://localhost:7000/user/getexpense/1',{headers:{Authentication:token}})
+    const rowno=document.getElementById('rows').value;
+    console.log(rowno);
+    const row=localStorage.getItem('rows');
+    // console.log('row no:',row)
+    document.getElementById('rows').value=row;
+
+      axios.get('http://localhost:7000/user/getexpense',{params: { page:1,rows:row },headers:{Authentication:token}})
                  .then(res=>{
                     console.log(res);
                     const expenselist=document.getElementById('listOfExpenses');
@@ -39,6 +45,27 @@ getdata.addEventListener('click',()=>{
                     for(var i=0;i<res.data.expenses.length;i++){
                         add(res.data.expenses[i]);
                     }
+                    const page=document.getElementById('pagination-button');
+                    page.innerHTML='';
+                    if(res.data.hasPreviosPage){
+                        page.innerHTML+=`<button class="pbutton" >${res.data.prevPage}</button>`;
+
+                    }
+                    if(res.data.currentPage!=0){
+                        page.innerHTML+=`<button class="pbutton" class="active" >${res.data.currentPage}</button>`;
+                    }
+                    if(res.data.hasNextPage){
+                        console.log('next page');
+                        page.innerHTML+=`<button class="pbutton" >${res.data.nextPage}</button>`;
+                    }
+                    if(res.data.lastPage!==res.data.currentPage && res.data.nextPage!==res.data.lastPage)
+                    {
+                        console.log('last page')
+                        page.innerHTML+=`<button class="pbutton" >${res.data.lastPage}</button>`;
+
+                    }
+
+
                     document.querySelector('#expense-list').style = "display:block;"
                 })
                  .catch(err=>{
@@ -53,7 +80,14 @@ page.addEventListener('click',(e)=>{
         expenselist.innerHTML='';
         const pageno=e.target.innerText;
         console.log('pageno:'+pageno);
-        axios.get(`http://localhost:7000/user/getexpense/${pageno}`,{headers:{Authentication:token}})
+        
+    const rowno=document.getElementById('rows').value;
+    localStorage.setItem('rows',rowno);
+    const row=localStorage.getItem('rows');
+    console.log('no of rows:',row)
+
+    axios.get('http://localhost:7000/user/getexpense',{params: { page:pageno,rows:row },headers:{Authentication:token}})
+        // axios.get(`http://localhost:7000/user/getexpense/${pageno}`,{headers:{Authentication:token}})
            .then(res=>{
             console.log(res);
            
@@ -61,6 +95,27 @@ page.addEventListener('click',(e)=>{
            for(var i=0;i<res.data.expenses.length;i++){
             add(res.data.expenses[i]);
         }
+        const page=document.getElementById('pagination-button');
+                    page.innerHTML='';
+                    if(res.data.hasPreviosPage){
+                        page.innerHTML+=`<button class="pbutton" >${res.data.prevPage}</button>`;
+
+                    }
+                    if(res.data.currentPage!=0){
+                        page.innerHTML+=`<button class="pbutton" class="active" >${res.data.currentPage}</button>`;
+                    }
+                    if(res.data.hasNextPage){
+                        // console.log('next page');
+                        page.innerHTML+=`<button class="pbutton" >${res.data.nextPage}</button>`;
+                    }
+                    if(res.data.lastPage!==res.data.currentPage && res.data.nextPage!==res.data.lastPage)
+                    {
+                        // console.log('last page')
+                        page.innerHTML+=`<button class="pbutton" >${res.data.lastPage}</button>`;
+
+                    }
+
+
         document.querySelector('#expense-list').style = "display:block;"
     })
      .catch(err=>{

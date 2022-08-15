@@ -14,7 +14,7 @@ form.addEventListener('click',(e)=>{
         password:password
     })
     .then(res=>{
-        // alert(res.data.message);
+        alert(res.data.message);
         if(res.data.success){
             console.log(res.data);
             localStorage.setItem('token',res.data.token)
