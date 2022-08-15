@@ -18,7 +18,7 @@ axios.post('http://localhost:7000/user/addexpense',
 )
 .then(res=>{
     console.log(res);
-    add(res.data.expense);
+    // add(res.data.expense);
 })
 .catch(err=>{
     console.log(err);
@@ -31,17 +31,43 @@ axios.post('http://localhost:7000/user/addexpense',
 const getdata=document.getElementById('get-expense');
 const token=localStorage.getItem('token');
 getdata.addEventListener('click',()=>{
-    axios.get('http://localhost:7000/user/getexpense',{headers:{Authentication:token}})
+    axios.get('http://localhost:7000/user/getexpense/1',{headers:{Authentication:token}})
                  .then(res=>{
-                    for(var i=0;i<res.data.length;i++){
-                        add(res.data[i]);
+                    console.log(res);
+                    const expenselist=document.getElementById('listOfExpenses');
+                    expenselist.innerHTML='';            
+                    for(var i=0;i<res.data.expenses.length;i++){
+                        add(res.data.expenses[i]);
                     }
-                 })
+                    document.querySelector('#expense-list').style = "display:block;"
+                })
                  .catch(err=>{
                     console.log(err);
                  })
 })
 
+const page=document.getElementById('pagination-button');
+page.addEventListener('click',(e)=>{
+    if(e.target.className=='pbutton'){
+        const expenselist=document.getElementById('listOfExpenses');
+        expenselist.innerHTML='';
+        const pageno=e.target.innerText;
+        console.log('pageno:'+pageno);
+        axios.get(`http://localhost:7000/user/getexpense/${pageno}`,{headers:{Authentication:token}})
+           .then(res=>{
+            console.log(res);
+           
+           // console.log(data);
+           for(var i=0;i<res.data.expenses.length;i++){
+            add(res.data.expenses[i]);
+        }
+        document.querySelector('#expense-list').style = "display:block;"
+    })
+     .catch(err=>{
+        console.log(err);
+     })
+    }
+})
 
 function add(data){
     var listOfExpenses=document.getElementById('listOfExpenses');

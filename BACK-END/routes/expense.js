@@ -7,7 +7,7 @@ const ExpenseController=require('../controllers/expense');
 
 router.post('/addexpense',authentication.authenticate,ExpenseController.addExpense);
 
-router.get('/getexpense',authentication.authenticate,ExpenseController.getExpense);
+router.get('/getexpense/:page',authentication.authenticate,ExpenseController.getExpense);
 
 router.get('/getalluser',authentication.authenticate,ExpenseController.getAllUser);
 

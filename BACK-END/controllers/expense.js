@@ -26,17 +26,45 @@ exports.addExpense=(req,res)=>{
                })
 }
 
-
-exports.getExpense=(req,res)=>{
+const ItemsPerPage=2;
+exports.getExpense=async (req,res)=>{
+  const page=req.params.page;
+// console.log('pageno:'+page);
+let totalItems;
   const id=req.user.id;
   console.log('id :',id);
-    req.user.getExpenses()
-              .then(expense=>{
-                res.status(200).json(expense);
-              })
-              .catch(err=>{
-                res.status(402).json({error:err,success:false});
-              })
+  Expense.count({where:{userId:id}})
+       .then(numexpenses=>{
+        totalItems=numexpenses;
+        console.log('total expenses'+JSON.stringify(totalItems));
+        return Expense.findAll({
+            where:{userId:id},
+            offset:((page-1)*ItemsPerPage),
+            limit:ItemsPerPage    
+        })
+       })
+         .then(expenses=>{
+          console.log('expenses  '+JSON.stringify( expenses));
+          res.json({expenses,
+          totalexpenses:totalItems,
+          hasNextPage:ItemsPerPage*page<totalItems,
+          hasPreviosPage:page>1,
+          nextPage:page+1,
+          prevPage:page-1,
+          lastPage:Math.ceil(totalItems/ItemsPerPage)
+          })
+         })
+
+
+
+
+    // req.user.getExpenses()
+    //           .then(expense=>{
+    //             res.status(200).json(expense);
+    //           })
+    //           .catch(err=>{
+    //             res.status(402).json({error:err,success:false});
+    //           })
 }
 
 exports.getOneExpense=(req,res)=>{
