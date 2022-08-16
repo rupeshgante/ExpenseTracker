@@ -17,6 +17,7 @@ axios.post('http://localhost:7000/user/addexpense',
     {headers:{Authentication:token}}
 )
 .then(res=>{
+    alert('Added Expense')
     console.log(res);
     // add(res.data.expense);
 })
@@ -72,7 +73,7 @@ getdata.addEventListener('click',()=>{
                     console.log(err);
                  })
 })
-
+//Pagination
 const page=document.getElementById('pagination-button');
 page.addEventListener('click',(e)=>{
     if(e.target.className=='pbutton'){
@@ -102,7 +103,7 @@ page.addEventListener('click',(e)=>{
 
                     }
                     if(res.data.currentPage!=0){
-                        page.innerHTML+=`<button class="pbutton" class="active" >${res.data.currentPage}</button>`;
+                        page.innerHTML+=`<button  class="active" >${res.data.currentPage}</button>`;
                     }
                     if(res.data.hasNextPage){
                         // console.log('next page');
@@ -227,7 +228,7 @@ function add(data){
 
 
     // Leaderboard
-
+if(localStorage.getItem('premium')==1){
     const leaderboard=document.getElementById('board')
 
     leaderboard.addEventListener('click',(e)=>{
@@ -287,12 +288,24 @@ function add(data){
       }
     axios.get('http://localhost:7000/user/getoneexpense',{params: { user_id:id },headers:{Authentication:token}})
     .then(res=>{
+        console.log(res);
         for(var i=0;i<res.data.length;i++){
             add(res.data[i]);
         }
+        document.querySelector('#expense-list').style = "display:block;"
+
      })
      .catch(err=>{
         console.log(err);
      })
 
     }
+}
+    //LOGOUT
+
+    const logout=document.getElementById('logout');
+    logout.addEventListener('click',()=>{
+        localStorage.clear();
+        window.location.assign('http://127.0.0.1:5500/FRONT-END/login/login.html')
+
+    })

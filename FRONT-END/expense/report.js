@@ -45,7 +45,8 @@ previous.addEventListener('click',()=>{
        .then(res=>{
         console.log(res);
 
-        var list = document.getElementsByClassName('list-of-files');
+        var list = document.getElementById('list-of-files');
+        list.innerHTML='';
           for(var i=0; i<res.data.length; i++) {
             var li=document.createElement('li');
             var a=document.createElement('a');
@@ -54,6 +55,7 @@ previous.addEventListener('click',()=>{
             li.appendChild(a);
             console.log(li);
             list.appendChild(li);
+            // console.log(list)
             
 
             }

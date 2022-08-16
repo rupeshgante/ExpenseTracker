@@ -19,8 +19,10 @@ form.addEventListener('click',(e)=>{
             console.log(res.data);
             localStorage.setItem('token',res.data.token)
            if(res.data.user[0].ispremiumuser){
+            localStorage.setItem('premium',1);
                         window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/premium.html')
            }else{
+            localStorage.setItem('premium',0);
             window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/expense.html');
         }
     }
