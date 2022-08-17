@@ -202,6 +202,7 @@ function add(data){
             // const premium=document.getElementById('form');
             // premium.style.background='linear-gradient(45deg,#cee3e2,#32e7e7)';
             alert('You are a Premium Member Now');
+            localStorage.setItem('premium',1);
             window.location.assign('http://127.0.0.1:5500/FRONT-END/expense/premium.html')
             // premium.classList.add('active');
 
