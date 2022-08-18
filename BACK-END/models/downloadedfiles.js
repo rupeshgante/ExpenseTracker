@@ -14,5 +14,5 @@ const DownloadedFile=sequelize.define('downloadedfile',{
         allowNull:false
     }
 })
-
+ 
 module.exports=DownloadedFile;

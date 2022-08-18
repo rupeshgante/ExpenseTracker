@@ -25,7 +25,7 @@ exports.forgotPassword=async(req,res)=>{
     .catch(err=>{
       throw new Error(err);
     })
-    const message={
+    const message={   
     to:mail,
     from:'rupeshgante@gmail.com',
     subject:'reset password link',

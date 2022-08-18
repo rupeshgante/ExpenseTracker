@@ -11,7 +11,7 @@
     "start": "nodemon app.js",
     "start-server": "node app.js"
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/rupeshgante/ExpenseTracker.git"
   },

@@ -16,7 +16,7 @@ exports.authenticate=(req,res,next)=>{
                     })
                     .catch(err=>{
                         throw new Error(err);
-                    })
+                    })   
 } catch(err){
     return res.status(401).json({success:false})
 }
