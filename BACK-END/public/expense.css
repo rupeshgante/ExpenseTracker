@@ -1,0 +1,236 @@
+header{
+  border-bottom-style: dotted;
+  border-width: thick;
+  /* padding-bottom: 5%; */
+}
+
+header h2{
+  text-align: center;
+    font-family:"Metal Mania";
+    padding:20px;
+    font-size:100px;
+    /* background-image: linear-gradient(to left, violet, indigo, green, blue, yellow, orange, red);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent; */
+   
+}
+header .header{
+    background-color: #fff;
+    height: 45px;
+  }
+
+  header a{
+    font-size: 25px;
+    position: absolute;
+    top: 50;
+    right:0;
+  }
+  a:hover { color: #f03737; }
+
+  /* header a img{
+    width: 134px;
+  margin-top: 4px;
+  } */
+  .expenses{
+    padding-top: 5%;
+  }
+  .expense-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+  }
+  .expense-page .form .expense{
+    margin-top: -31px;
+  margin-bottom: 26px;
+  }
+
+  .form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+  .form input  {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background-color: #328f8a;
+    background-image: linear-gradient(45deg,#328f8a,#08ac4b);
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin-bottom: 15px;
+
+  }
+
+  .form select  {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  body {
+    background-color: #328f8a;
+    background-image: linear-gradient(45deg,#328f8a,#08ac4b);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+
+  ul {
+    counter-reset: index;  
+    padding: 0;
+    /* max-width: 1000px; */
+  }
+  
+  /* List element */
+  .expense-list li {
+    counter-increment: index; 
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    box-sizing: border-box;
+    background-image: linear-gradient(45deg,rgb(227, 230, 162),#811bf5);
+    color: #3c3e3c;
+    font-family: cursive;
+    
+  }
+
+  
+  
+  #delete {
+    position: relative;
+   left:250px;
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background-color: #2088d2;
+      background-image: linear-gradient(45deg,#d99897,#c64c4a);
+      width: 10%;
+      border: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      /* border:2px solid red; */
+      font-size: 15px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+      margin-bottom: 15px;
+
+  }
+
+  #delete button:hover{
+    color: red;
+    background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
+  }
+  
+  /* Element counter */
+  /* li::before {
+    content: counters(index, ".", decimal-leading-zero);
+    font-size: 1.5rem;
+    text-align: right;
+    font-weight: bold;
+    min-width: 50px;
+    padding-right: 12px;
+    font-variant-numeric: tabular-nums;
+    align-self: flex-start;
+    background-image: linear-gradient(to bottom, aquamarine, orangered);
+    background-attachment: fixed;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+   */
+  
+  /* Element separation */
+  li + li {
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  
+
+  #premium-membership {
+    position: relative;
+    left: 570px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background-color: #328f8a;
+    background-image: linear-gradient(45deg,#1b1b1d,#404141);
+    width: 25%;
+    border: 0;
+    padding: 15px;
+    /* color: rgb(104, 91, 223); */
+    font-family: Arial ;
+    color: rgb(244, 201, 9);
+    font-size: 19px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+  .expenses button:hover{
+    background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
+    color:black;
+
+  }
+
+  .expense-list{
+    display: none;
+  }
+
+  .pagination {
+    text-align: center;
+    padding: 2rem;
+}
+
+.pagination button{
+    cursor:pointer;
+    padding:10px;
+    color:white;
+    border:none;
+    margin: 0 0.1rem;
+    font-size:15px;
+    font-weight: bold;
+    border-radius: 4%;
+    background-image: linear-gradient(45deg,#328f8a,#08ac4b);
+}
+
+#pagination-button  button:hover{
+  background-image: linear-gradient(45deg,#cee3e2,#32e7e7);
+  color:black;}
