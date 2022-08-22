@@ -130,8 +130,8 @@ exports.downloadExpense=async(req,res)=>{
     const url=await S3Services.uploadToS3(stringifyExpense,filename);
     console.log(url);
     req.user.createDownloadedfile({
-      url:url
-    })
+      url:url   
+    }) 
      .then(res=>{
       console.log(res)
      })

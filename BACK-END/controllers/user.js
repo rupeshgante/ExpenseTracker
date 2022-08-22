@@ -46,7 +46,7 @@ function getAccessToken(id) {
 
 exports.postLogin=(req,res)=>{
 const {email,password}=req.body;
-User.findAll({where:{email}})
+User.findAll({where:{email}})    
 .then(user => {
     if(user.length ==1){
         bcrypt.compare(password, user[0].password, function(err, response) {

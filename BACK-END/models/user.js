@@ -16,9 +16,9 @@ const User=sequelize.define('user',{
         allowNull:false,
         unique:true
     },
-    password:Sequelize.STRING,
+    password:Sequelize.STRING, 
     phone:Sequelize.BIGINT,
-    ispremiumuser: Sequelize.BOOLEAN,
+    ispremiumuser: Sequelize.BOOLEAN, 
     totalexpense:Sequelize.INTEGER
     
 });

@@ -13,10 +13,10 @@ exports.authenticate=(req,res,next)=>{
                     .then(user=>{
                         req.user=user;
                         next();
-                    })
+                    }) 
                     .catch(err=>{
                         throw new Error(err);
-                    })
+                    })   
 } catch(err){
     return res.status(401).json({success:false})
 }

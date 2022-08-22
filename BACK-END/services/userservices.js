@@ -5,4 +5,4 @@ const getExpense=(req)=>{
 
 module.exports={
     getExpense
-}
+}  

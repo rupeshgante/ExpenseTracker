@@ -20,12 +20,12 @@ exports.forgotPassword=async(req,res)=>{
     const id=uuidv4();
     user.createForgotpassword(
       {id:id,
-      isactive:true
+      isactive:true 
       })
     .catch(err=>{
       throw new Error(err);
     })
-    const message={
+    const message={   
     to:mail,
     from:'rupeshgante@gmail.com',
     subject:'reset password link',

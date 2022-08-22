@@ -13,10 +13,10 @@ const uploadToS3=(data,filename)=>{
       Body:data,
       ACL:'public-read'
     }
-  
+   
   return new Promise((resolve,reject)=>{
     
-    s3bucket.upload(params,(err,response)=>{
+    s3bucket.upload(params,(err,response)=>{ 
       if(err){
         console.log('Error :',err);
         reject(err);

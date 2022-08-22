@@ -10,4 +10,4 @@ router.get('/premiummembership', authentication.authenticate,purchaseController.
 
 router.post('/updatetransaction', authentication.authenticate, purchaseController.updateTransaction);
 
-module.exports = router;
+module.exports = router;  
