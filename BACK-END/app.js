@@ -13,7 +13,7 @@ const sequelize=require('./util/database');
 
 const accessLogStream=fs.createWriteStream(path.join(__dirname,'access.log'),
 { 
-  flags:'a'
+  flags:'a' 
 }); 
 
 // const privateKey=fs.readFileSync('server.key');
