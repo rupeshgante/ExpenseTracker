@@ -14,7 +14,7 @@ const Expense=sequelize.define('expense',{
         allowNull:false, 
     },
     catageory:{
-        type:Sequelize.STRING,
+        type:Sequelize.STRING, 
         allowNull:false
     },
     description:Sequelize.STRING    

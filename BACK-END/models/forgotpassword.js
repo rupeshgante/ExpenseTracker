@@ -12,4 +12,4 @@ const ForgotPassword=sequelize.define('forgotpassword',{
     
 })
 
-module.exports=ForgotPassword; 
+module.exports=ForgotPassword;  

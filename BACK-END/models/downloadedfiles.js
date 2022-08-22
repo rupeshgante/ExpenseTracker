@@ -12,7 +12,7 @@ const DownloadedFile=sequelize.define('downloadedfile',{
     url:{
         type:Sequelize.STRING,
         allowNull:false
-    }
+    } 
 })
  
 module.exports=DownloadedFile;

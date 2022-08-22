@@ -131,7 +131,7 @@ exports.downloadExpense=async(req,res)=>{
     console.log(url);
     req.user.createDownloadedfile({
       url:url   
-    })
+    }) 
      .then(res=>{
       console.log(res)
      })

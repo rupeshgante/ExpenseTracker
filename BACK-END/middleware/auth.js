@@ -13,7 +13,7 @@ exports.authenticate=(req,res,next)=>{
                     .then(user=>{
                         req.user=user;
                         next();
-                    })
+                    }) 
                     .catch(err=>{
                         throw new Error(err);
                     })   

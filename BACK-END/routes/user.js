@@ -10,4 +10,4 @@ router.post('/login',pubilcController.postLogin);
 
 
 module.exports=router;
- 
+  
